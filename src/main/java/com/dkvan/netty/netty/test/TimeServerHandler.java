@@ -4,11 +4,27 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import io.netty.channel.socket.SocketChannel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class TimeServerHandler extends ChannelInboundHandlerAdapter {
+	public void channelActive(ChannelHandlerContext ctx){
+		String uuid = ctx.channel().id().asLongText();
+        ChannelServer.addGatewayChannel(uuid, (SocketChannel)ctx.channel());
+        System.out.println("a new connect come in: " + uuid);
+        Map<String,SocketChannel> map = ChannelServer.getChannels();
+        for(String key:map.keySet()){
+        	System.out.println(key+":"+map.get(key));
+        }
+	}
+	
+	public void channelInactive(ChannelHandlerContext ctx){
+		System.out.println("channel inactive");
+		ChannelServer.removeGatewayChannel(ctx.channel().id().asLongText());
+	}
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)

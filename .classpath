@@ -25,5 +25,6 @@
 	<classpathentry kind="lib" path="/carlocation/WebContent/WEB-INF/lib/hsqldb.jar"/>
 	<classpathentry kind="lib" path="C:/Users/carol/Documents/Tencent Files/904490307/FileRecv/jersey-multipart-1.18.jar"/>
 	<classpathentry kind="lib" path="C:/Users/carol/Documents/Tencent Files/904490307/FileRecv/swagger-annotations-1.5.8.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
